@@ -1,0 +1,50 @@
+﻿@model IEnumerable<ResumeBuilder.Models.Experience>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="mt-5">Experience</h1>
+<button type="button" class="btn btn-primary"><a asp-action="Create" class="text-dark fw-bold" style="text-decoration:none;">Create New</a></button>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ExperienceName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Role)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExperienceName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Role)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.Student.Firstname) @Html.DisplayFor(modelItem => item.Student.Middlename) @Html.DisplayFor(modelItem => item.Student.Lastname)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

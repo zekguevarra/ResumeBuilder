@@ -1,0 +1,50 @@
+﻿@model IEnumerable<ResumeBuilder.Models.EmergencyContact>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="mt-5">Emergency Contact</h1>
+<button type="button" class="btn btn-primary"><a asp-action="Create" class="text-dark fw-bold" style="text-decoration:none;">Create New</a></button>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EmergencyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmergencyContact1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Relationship)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmergencyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmergencyContact1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Relationship)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.Student.Firstname) @Html.DisplayFor(modelItem => item.Student.Middlename) @Html.DisplayFor(modelItem => item.Student.Lastname)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
