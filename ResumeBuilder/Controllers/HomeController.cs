@@ -39,7 +39,8 @@ namespace ResumeBuilder.Controllers
                 Email = student.Email,
                 Age = (int)student.Age,
                 Address = student.Address,
-                Objective = student.Objectives
+                Objective = student.Objectives,
+                PhoneNumber = student.PhoneNumber
             };
             var links = _context.Links.FirstOrDefault();
             vm.Github = links.Github;
@@ -60,9 +61,9 @@ namespace ResumeBuilder.Controllers
             {
                 var tr = new Training1
                 {
-                    TrainingName=i.TrainingName,
-                    TrainingLocation=i.Location
-                    //StartDate=(DateTime)school.StartDate.GetValueOrDefault(),
+                    TrainingName = i.TrainingName,
+                    TrainingLocation = i.Location,
+                    EndDate = i.EndDate.HasValue ? i.EndDate.Value : (DateTime?)null
                 };
                 vm.Trainings.Add(tr);
             }
@@ -85,7 +86,8 @@ namespace ResumeBuilder.Controllers
                     SchoolName = school.Schoolname,
                     SchoolLocation = school.Location,
                     Course = school.Course,
-                    StartDate =school.StartDate.HasValue? school.StartDate.Value : new DateTime()
+                    StartDate =school.StartDate.HasValue? school.StartDate.Value : new DateTime(),
+                    EndDate = school.EndDate.HasValue? school.EndDate.Value : new DateTime()
                 };
                 vm.Schools.Add(ed);
             }
@@ -98,7 +100,9 @@ namespace ResumeBuilder.Controllers
                     id = experience.Id,
                     ExperienceName = experience.ExperienceName,
                     ExperienceLocation = experience.Location,
-                    Role = experience.Role
+                    Role = experience.Role,
+                    StartDate = experience.StartDate.HasValue ? experience.StartDate.Value :(DateTime?)null,
+                    EndDate = experience.EndDate.HasValue ? experience.EndDate.Value : (DateTime?)null
                 };
                 vm.Experiences.Add(ex);
             }

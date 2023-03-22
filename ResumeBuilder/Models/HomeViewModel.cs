@@ -9,7 +9,7 @@ namespace ResumeBuilder.Models
         public string MiddleName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
-
+        public string PhoneNumber { get; set; }
         public string Address { get; set; }
         public int Age { get; set; }
 
@@ -31,6 +31,8 @@ namespace ResumeBuilder.Models
         public string ExperienceName { get; set; }
         public string ExperienceLocation { get; set; }
         public string Role { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
 
     }
     public class EmergencyContact1
@@ -43,6 +45,8 @@ namespace ResumeBuilder.Models
     {
         public string TrainingName { get; set; }
         public string TrainingLocation { get; set; }
+
+        public DateTime? EndDate { get; set; }
     }
     public class Skill1
     {
@@ -55,5 +59,6 @@ namespace ResumeBuilder.Models
         public string Course { get; set; }
         public string SchoolLocation { get; set; }
         public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
     }
 }

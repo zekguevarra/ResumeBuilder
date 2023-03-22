@@ -15,5 +15,9 @@ public partial class Experience
 
     public int? StudentId { get; set; }
 
+    public DateTime? StartDate { get; set; }
+
+    public DateTime? EndDate { get; set; }
+
     public virtual Student? Student { get; set; }
 }

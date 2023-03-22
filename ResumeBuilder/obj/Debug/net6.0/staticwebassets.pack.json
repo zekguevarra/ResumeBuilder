@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\Zek\\source\\repos\\ResumeBuilder\\ResumeBuilder\\wwwroot\\images\\stonks.png",
+      "PackagePath": "staticwebassets\\images\\stonks.png"
+    },
+    {
       "Id": "C:\\Users\\Zek\\source\\repos\\ResumeBuilder\\ResumeBuilder\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
@@ -195,6 +199,10 @@
     {
       "Id": "C:\\Users\\Zek\\source\\repos\\ResumeBuilder\\ResumeBuilder\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Zek\\source\\repos\\ResumeBuilder\\ResumeBuilder\\wwwroot\\lib\\images\\stonks.png",
+      "PackagePath": "staticwebassets\\lib\\images\\stonks.png"
     },
     {
       "Id": "C:\\Users\\Zek\\source\\repos\\ResumeBuilder\\ResumeBuilder\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",

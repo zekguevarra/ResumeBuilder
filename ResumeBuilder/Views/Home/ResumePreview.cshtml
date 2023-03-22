@@ -1,49 +1,16 @@
 ﻿@model ResumeBuilder.Models.HomeViewModel
 
-<div class="m-3 p-4 border border-2 shadow-lg resume">
+<div class="m-3 p-5 border border-2 shadow-lg resume">
     <div class="text-center my-4">
         <h1 class="display-4">@Model.FirstName @Model.MiddleName @Model.LastName</h1>
-        <div class="col">@Model.Age  |  @Model.Email  |  @Model.Address </div>
+        <div class="col">@Model.Age  |  @Model.PhoneNumber   |  @Model.Email  |  @Model.Address </div>
     </div>
     <hr />
-    <h3 class="mt-2">Objectives</h3>
+    <h3 class="mt-2">OBJECTIVES</h3>
     <p class="mt-2">@Model.Objective</p>
     <hr />
-    <div class="row text-center mt-5">
-        <div class="col">
-            <h2>EDUCATION</h2>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">School</th>
-                        <th scope="col">Location</th>
-                        <th scope="col">Course</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model.Schools)
-                    {
-
-                        <tr>
-                            <td>@item.SchoolName</td>
-                            <td>@item.SchoolLocation</td>
-                            <td>@item.Course</td>
-                            @*<td>@item.StartDate.ToShortDateString()</td>*@
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-        <div class="col text-center">
-            <h2>LINK</h2>
-            <div>Github:<span><a href="https://@Model.Github" target="_blank" > @Model.Github</a> </span></div>
-            <div>Facebook:<span><a href="https://@Model.Facebook" target="_blank">@Model.Facebook</a> </span></div>
-            <div>Portfolio:<span><a href="https://@Model.Portfolio" target="_blank"> @Model.Portfolio</a> </span></div>
-            <div>LinkedIn:<span><a href="https://@Model.LinkedIn" target="_blank"> @Model.LinkedIn</a> </span></div>
-        </div>
-    </div>
-    <div class="row mt-4">
-        <div class="mt-4 col-md-6 text-center">
+    <div class="row">
+        <div class="mt-2 col-md-6 text-center">
             <h2 class="text-center mb-2">Skills</h2>
             <ul style="list-style-position:inside; text-align:left;" class="row">
                 @foreach (var item in Model.Skills)
@@ -52,64 +19,80 @@
                 }
             </ul>
         </div>
+        <div class="mt-2 col-md-6 text-center">
+            <h2 class="mb-2">LINK</h2>
+            <div>Github:<span><a href="https://@Model.Github" target="_blank"> @Model.Github</a> </span></div>
+            <div>Facebook:<span><a href="https://@Model.Facebook" target="_blank">@Model.Facebook</a> </span></div>
+            <div>Portfolio:<span><a href="https://@Model.Portfolio" target="_blank"> @Model.Portfolio</a> </span></div>
+            <div>LinkedIn:<span><a href="https://@Model.LinkedIn" target="_blank"> @Model.LinkedIn</a> </span></div>
+        </div>
+    </div>
+    <hr />
+    <div class="my-3">
+        <h3>EDUCATION</h3>
+        @foreach (var item in Model.Schools)
+        {
+            <div class="my-1"><span class="h5 me-1" style="text-transform:uppercase">@item.SchoolName - @item.SchoolLocation</span><span class=" h6" style="float:right">@Convert.ToDateTime(item.StartDate).ToString("MMM yyyy") - @Convert.ToDateTime(item.EndDate).ToString("MMM yyyy")</span></div>
+            <div>@item.Course</div>
+            @*<td>@item.EndDate.ToShortDateString()</td> // eto para ipaappear yung date - month - year *@
+        }
+    </div>
+    <hr />
+    <div class="my-3">
+        <h3>EXPERIENCE</h3>
+        @foreach (var item in Model.Experiences)
+        {
+            <div class="h5"><span style="text-transform:uppercase">@item.ExperienceName</span> - <span>@item.Role</span> <span class=" h6" style="float:right">@Convert.ToDateTime(item.StartDate).ToString("MMM yyyy") - @Convert.ToDateTime(item.EndDate).ToString("MMM yyyy")</span></div>
+            <div class="h6">@item.ExperienceLocation</div>
+            <div>@item.Role</div>
+        }
+    </div>
+    <hr />
+    <div class="row mt-4">
         <div class="mt-4 col-md-6 text-center">
             <h2 class="text-center mb-2">Trainings</h2>
-            <div class="row">
+            <div class="row text-center mx-5">
                 @foreach (var item in Model.Trainings)
                 {
-                    <div style="text-align:right" class="col-sm-6 py-1"> @item.TrainingName</div>
-                    <div style="text-align:left" class="col-sm-6 py-1 ps-3"> @item.TrainingLocation</div>
+                    <div style="float:right; text-align:center" class="col-sm-6 py-1"> @item.TrainingName <br>@item.TrainingLocation</div>
+                    <div style="text-align:center" class="col-sm-6 py-1">
+                        @if (@item.EndDate != null)
+                        {
+                            @Convert.ToDateTime(item.EndDate).ToString("MMM yyyy")
+
+                        }
+                        else
+                        {
+                            <p></p>
+                        }
+                    </div>
                 }
             </div>
         </div>
-    </div>
+        <div class="mt-4 col-md-6 text-center">
+            <h2 class="text-center mb-2">Emergency Contact</h2>
+            <div class="row">
+                <div class="col">
+                    @foreach (var item in Model.EmergencyContacts)
+                    {
+                        <div style="text-align:right;"> @item.EmergencyContact</div>
 
-    <div class="my-3 pb-5 container">
-        <h2 class="text-center">Work Experience</h2>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Company</th>
-                    <th scope="col">Location</th>
-                    <th scope="col">Position</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.Experiences)
-                {
+                    }
+                </div>
+                <div class="col">
 
-                    <tr>
-                        <td>@item.ExperienceName</td>
-                        <td>@item.ExperienceLocation</td>
-                        <td>@item.Role</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-    <div class="mb-5 col-md-6 text-center">
-        <h2 class="text-center mb-2">Emergency Contact</h2>
-        <div class="row">
-            <div class="col">
-                @foreach (var item in Model.EmergencyContacts)
-                {
-                    <div style="text-align:right;"> @item.EmergencyContact</div>
+                    @foreach (var item in Model.EmergencyContacts)
+                    {
+                        <div>  @item.EmergencyNumber</div>
+                    }
+                </div>
+                <div class="col">
+                    @foreach (var item in Model.EmergencyContacts)
+                    {
+                        <div style="text-align:left;"> @item.EmergencyRelation</div>
 
-                }
-            </div>
-            <div class="col">
-
-                @foreach (var item in Model.EmergencyContacts)
-                {
-                    <div>  @item.EmergencyNumber</div>
-                }
-            </div>
-            <div class="col">
-                @foreach (var item in Model.EmergencyContacts)
-                {
-                    <div style="text-align:left;"> @item.EmergencyRelation</div>
-
-                }
+                    }
+                </div>
             </div>
         </div>
     </div>

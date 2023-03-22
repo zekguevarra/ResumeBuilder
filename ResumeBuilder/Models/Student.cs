@@ -21,6 +21,8 @@ public partial class Student
 
     public string? Objectives { get; set; }
 
+    public string? PhoneNumber { get; set; }
+
     public virtual ICollection<EmergencyContact> EmergencyContacts { get; } = new List<EmergencyContact>();
 
     public virtual ICollection<Experience> Experiences { get; } = new List<Experience>();

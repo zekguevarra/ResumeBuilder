@@ -69,7 +69,7 @@ namespace ResumeBuilder.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ExperienceName,Role,Location,StudentId")] Experience experience)
+        public async Task<IActionResult> Create([Bind("Id,ExperienceName,Role,Location,StartDate,EndDate,StudentId")] Experience experience)
         {
             if (ModelState.IsValid)
             {
@@ -109,7 +109,7 @@ namespace ResumeBuilder.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ExperienceName,Role,Location,StudentId")] Experience experience)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ExperienceName,Role,Location,StartDate,EndDate,StudentId")] Experience experience)
         {
             if (id != experience.Id)
             {
